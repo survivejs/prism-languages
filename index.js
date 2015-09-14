@@ -2841,4 +2841,21 @@ Prism.languages.yaml = {
 	'important': /[&*][\w]+/,
 	'punctuation': /([:[\]{}\-,|>?]|---|\.\.\.)/
 };
-delete Prism.languages.extend;delete Prism.languages.insertBefore;module.exports = Prism.languages;
+// https://github.com/CupOfTea696/prism
+Prism.languages.json = {
+    'property': /"(\b|\B)[\w-]+"(?=\s*:)/ig,
+    'string': /"(?!:)(\\?[^'"])*?"(?!:)/g,
+    'number': /\b-?(0x[\dA-Fa-f]+|\d*\.?\d+([Ee]-?\d+)?)\b/g,
+    'function': {
+        pattern: /[a-z0-9_]+\(/ig,
+        inside: {
+            punctuation: /\(/
+        }
+    },
+    'punctuation': /[{}[\]);,]/g,
+    'operator': /:/g,
+    'boolean': /\b(true|false)\b/gi,
+    'null': /\bnull\b/gi,
+};
+
+Prism.languages.jsonp = Prism.languages.json;delete Prism.languages.extend;delete Prism.languages.insertBefore;module.exports = Prism.languages;
