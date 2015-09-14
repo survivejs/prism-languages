@@ -5,7 +5,7 @@
   "version": "0.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node ./lib/build.js"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,12 @@
   "keywords": [
     "prismjs"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "async": "^1.4.2",
+    "glob": "^5.0.14"
+  },
+  "dependencies": {
+    "prismjs": "0.0.1"
+  }
 }
