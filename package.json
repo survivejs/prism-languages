@@ -1,6 +1,6 @@
 {
   "name": "prism-languages",
-  "description": "Prism languages in an easy to consume format.",
+  "description": "Prism languages in an easy to consume format",
   "author": "Juho Vepsalainen <bebraw@gmail.com>",
   "version": "0.1.0",
   "main": "index.js",
