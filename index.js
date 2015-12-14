@@ -191,7 +191,33 @@ Prism.languages.insertBefore('d', 'function', {
 		pattern: /\b(?:[ABCD][LHX]|E[ABCD]X|E?(?:BP|SP|DI|SI)|[ECSDGF]S|CR[0234]|DR[012367]|TR[3-7]|X?MM[0-7]|R[ABCD]X|[BS]PL|R[BS]P|[DS]IL|R[DS]I|R(?:[89]|1[0-5])[BWD]?|XMM(?:[89]|1[0-5])|YMM(?:1[0-5]|\d))\b|\bST(?:\([0-7]\)|\b)/,
 		alias: 'variable'
 	}
-});Prism.languages.dart = Prism.languages.extend('clike', {
+});// https://github.com/jquense/react-widgets/blob/master/docs/vendor/prism-jsx.js
+var jsx = Prism.util.clone(Prism.languages.javascript)
+  , jsxExpression;
+
+Prism.languages.jsx = Prism.languages.extend('markup', jsx);
+
+Prism.languages.jsx.tag.pattern = /<\/?[\w\.:-]+\s*(?:\s+[\w\.:-]+(?:=(?:("|')(\\?[\w\W])*?\1|[^\s'">=]+|(\{[\w\W]*?\})))?\s*)*\/?>/i;
+
+Prism.languages.jsx.tag.inside['attr-value'].pattern = /=[^\{](?:('|")[\w\W]*?(\1)|[^\s>]+)/i;
+
+jsxExpression = Prism.util.clone(Prism.languages.jsx)
+
+delete jsxExpression.punctuation
+
+jsxExpression = Prism.languages.insertBefore('jsx', 'operator', {
+  'punctuation': /=(?={)|[{}[\];(),.:]/
+}, { jsx: jsxExpression })
+
+
+Prism.languages.insertBefore('inside', 'attr-value', {
+  'script': {
+    // Allow for one level of nesting
+    pattern: /=(\{(?:\{[^}]*\}|[^}])+\})/i,
+    inside: jsxExpression,
+    'alias': 'language-javascript'
+  }
+}, Prism.languages.jsx.tag);Prism.languages.dart = Prism.languages.extend('clike', {
 	'string': [
 		/r?("""|''')[\s\S]*?\1/,
 		/r?("|')(\\?.)*?\1/
@@ -5276,32 +5302,6 @@ Prism.languages.json = {
     'null': /\bnull\b/gi,
 };
 
-Prism.languages.jsonp = Prism.languages.json;// https://github.com/jquense/react-widgets/blob/master/docs/vendor/prism-jsx.js
-var jsx = Prism.util.clone(Prism.languages.javascript)
-  , jsxExpression;
-
-Prism.languages.jsx = Prism.languages.extend('markup', jsx);
-
-Prism.languages.jsx.tag.pattern = /<\/?[\w\.:-]+\s*(?:\s+[\w\.:-]+(?:=(?:("|')(\\?[\w\W])*?\1|[^\s'">=]+|(\{[\w\W]*?\})))?\s*)*\/?>/i;
-
-Prism.languages.jsx.tag.inside['attr-value'].pattern = /=[^\{](?:('|")[\w\W]*?(\1)|[^\s>]+)/i;
-
-jsxExpression = Prism.util.clone(Prism.languages.jsx)
-
-delete jsxExpression.punctuation
-
-jsxExpression = Prism.languages.insertBefore('jsx', 'operator', {
-  'punctuation': /=(?={)|[{}[\];(),.:]/
-}, { jsx: jsxExpression })
-
-
-Prism.languages.insertBefore('inside', 'attr-value', {
-  'script': {
-    // Allow for one level of nesting
-    pattern: /=(\{(?:\{[^}]*\}|[^}])+\})/i,
-    inside: jsxExpression,
-    'alias': 'language-javascript'
-  }
-}, Prism.languages.jsx.tag);delete Prism.languages.extend;
+Prism.languages.jsonp = Prism.languages.json;delete Prism.languages.extend;
 delete Prism.languages.insertBefore;
 module.exports = Prism.languages;
