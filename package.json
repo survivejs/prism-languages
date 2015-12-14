@@ -21,9 +21,10 @@
   "license": "MIT",
   "devDependencies": {
     "async": "^1.4.2",
-    "glob": "^5.0.14"
+    "glob": "^5.0.14",
+    "prismjs": ">= 1.3.0 < 2.0.0"
   },
-  "dependencies": {
-    "prismjs": "0.0.1"
+  "peerDependencies": {
+    "prismjs": ">= 1.3.0 < 2.0.0"
   }
 }
