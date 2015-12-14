@@ -19,6 +19,10 @@ Prism language definitions in an easy to consume format. Demo:
 ]
 ```
 
+## Acknowledgments
+
+* Better JSX from [react-widgets](https://github.com/jquense/react-widgets) by @jquense.
+
 ## License
 
 prism-languages is available under MIT. See LICENSE for more details.
