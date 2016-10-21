@@ -1,5 +1,3 @@
-**DEPRECATED!** - Use `require('prismjs').languages` instead!
-
 # prism-languages - Prism languages in an easy to consume format
 
 Prism language definitions in an easy to consume format. Demo:
