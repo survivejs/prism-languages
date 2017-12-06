@@ -2,7 +2,7 @@
   "name": "prism-languages",
   "description": "Prism languages in an easy to consume format",
   "author": "Juho Vepsalainen <bebraw@gmail.com>",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "main": "index.js",
   "scripts": {
     "build": "node ./lib/build.js",
@@ -16,7 +16,9 @@
   "bugs": {
     "url": "https://github.com/survivejs/prism-languages/issues"
   },
-  "keywords": ["prismjs"],
+  "keywords": [
+    "prismjs"
+  ],
   "license": "MIT",
   "devDependencies": {
     "async": "^2.6.0",
